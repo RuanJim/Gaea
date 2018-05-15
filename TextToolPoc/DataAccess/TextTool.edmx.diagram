@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b57678f266134588bd5d74a008d2c1e7" Name="Diagram1" >
+        <EntityTypeShape EntityType="TextTool.Template" Width="1.5" PointX="0.75" PointY="6.5" />
+        <EntityTypeShape EntityType="TextTool.TemplateField" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="TextTool.FieldMatch" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="TextTool.Project" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="TextTool.Article" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="TextTool.Pretreatment" Width="1.5" PointX="5.75" PointY="7.25" />
+        <EntityTypeShape EntityType="TextTool.Rule" Width="1.5" PointX="3" PointY="6.875" />
+        <EntityTypeShape EntityType="TextTool.FieldExpected" Width="1.5" PointX="5.25" PointY="4" />
+        <AssociationConnector Association="TextTool.TemplateTemplateField" />
+        <AssociationConnector Association="TextTool.TemplateFieldFieldMatch" />
+        <AssociationConnector Association="TextTool.TemplateFieldFieldExpected" />
+        <AssociationConnector Association="TextTool.ArticleFieldMatch" />
+        <AssociationConnector Association="TextTool.RuleFieldMatch" />
+        <AssociationConnector Association="TextTool.ProjectArticle" />
+        <AssociationConnector Association="TextTool.ArticleFieldExpected" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
