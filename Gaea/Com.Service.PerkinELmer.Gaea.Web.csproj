@@ -515,7 +515,6 @@
     <Content Include="build\development\TextTool\resources\TextTool-all_2.css" />
     <Content Include="build\temp\development\TextTool\sencha-compiler\app\full-page-master-bundle.js" />
     <Content Include="build\temp\development\TextTool\slicer-temp\bootstrap.js" />
-    <Content Include="Com\PerkinElmer\Service\TextTool\Views\TemplatePanel.js" />
     <Content Include="DataAccess\TextTool.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TextTool.Context.cs</LastGenOutput>
@@ -7539,6 +7538,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Com\PerkinElmer\Service\TextTool\Controllers\" />
     <Folder Include="Com\PerkinElmer\Service\TextTool\Stores\" />
+    <Folder Include="Com\PerkinElmer\Service\TextTool\Views\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

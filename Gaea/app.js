@@ -6,14 +6,13 @@
  * This call registers your application to be launched when the browser is ready.
  */
 Ext.application({
-    name: 'TextTool',
+    name: 'Gaea',
 
     requires: [
         'Ext.panel.Resizer',
         'Ext.Toolbar',
         'Ext.grid.plugin.CellEditing',
-        'Ext.layout.HBox',
-        'Com.PerkinElmer.Service.TextTool.Views.TemplatePanel'
+        'Ext.layout.HBox'
     ],
 
     launch: function () {
