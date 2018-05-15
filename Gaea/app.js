@@ -16,48 +16,6 @@ Ext.application({
     ],
 
     launch: function () {
-        var ruleStore = Ext.create('Ext.data.Store', {
-            fields: ['name', 'email', 'phone', 'percent'],
-            data: [
-                { 'name': '姓名1', "email": "^$", "phone": "44", 'percent': "50%" },
-                { 'name': '姓名2', "email": "^$", "phone": "34", 'percent': "30%" },
-                { 'name': '姓名3', "email": "^$", "phone": "22", 'percent': "41%" },
-                { 'name': '姓名4', "email": "^$", "phone": "88", 'percent': "77%" }
-            ]
-        });
-
-        var ruleGrid = {
-            docked: 'bottom',
-            height: '40%',
-            items: [{
-                xtype: 'grid',
-                title: '匹配规则',
-
-                store: ruleStore,
-
-                columns: [
-                    { text: '规则名称', editable: true, dataIndex: 'name', width: 200 },
-                    { text: '正则表达式', editable: true, dataIndex: 'email', width: 200 },
-                    { text: '匹配成功次数', dataIndex: 'phone', width: 200 },
-                    { text: '匹配成功率', dataIndex: 'percent', width: 100 }
-                ],
-                markDirty: true,
-                plugins: {
-                    gridcellediting: {
-                        selectOnEdit: true
-                    }
-                },
-
-                selectable: {
-                    rows: false,
-                    cells: true
-                },
-
-                height: '100%',
-                layout: 'fit'
-            }]
-        };
-
         var ruleSettings = {
             id: 'ruleDialog',
             layout: {
