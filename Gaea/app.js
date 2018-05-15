@@ -12,7 +12,8 @@ Ext.application({
         'Ext.panel.Resizer',
         'Ext.Toolbar',
         'Ext.grid.plugin.CellEditing',
-        'Ext.layout.HBox'
+        'Ext.layout.HBox',
+        'Com.PerkinElmer.Service.Gaea.Stores.RuleStore'
     ],
 
     launch: function () {
@@ -38,17 +39,7 @@ Ext.application({
                     xtype: 'grid',
                     title: '规则列表',
 
-                    store: {
-                        xtype: 'store',
-                        proxy: {
-                            type: 'ajax',
-                            url: '/api/Rules',
-                            reader: {
-                                type: 'json'
-                            }
-                        },
-                        autoLoad: true
-                    },
+                    store: Ext.create("Com.PerkinElmer.Service.Gaea.Stores.RuleStore"),
 
                     columns: [
                         { text: '编号', dataIndex: 'Id', width: 30 },
