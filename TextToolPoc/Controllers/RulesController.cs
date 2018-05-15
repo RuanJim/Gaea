@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using TextToolPoc.DataAccess;
+using Com.Service.PerkinElmer.Gaea.Web.DataAccess;
 
 namespace TextToolPoc.Controllers
 {
@@ -17,16 +17,16 @@ namespace TextToolPoc.Controllers
         private TextToolContainer db = new TextToolContainer();
 
         // GET: api/Rules
-        public IQueryable<DataAccess.Rule> GetRules()
+        public IQueryable<Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule> GetRules()
         {
             return db.Rules;
         }
 
         // GET: api/Rules/5
-        [ResponseType(typeof(DataAccess.Rule))]
+        [ResponseType(typeof(Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule))]
         public IHttpActionResult GetRule(int id)
         {
-            DataAccess.Rule rule = db.Rules.Find(id);
+            Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule rule = db.Rules.Find(id);
             if (rule == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace TextToolPoc.Controllers
 
         // PUT: api/Rules/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutRule(int id, DataAccess.Rule rule)
+        public IHttpActionResult PutRule(int id, Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule rule)
         {
             if (!ModelState.IsValid)
             {
@@ -71,8 +71,8 @@ namespace TextToolPoc.Controllers
         }
 
         // POST: api/Rules
-        [ResponseType(typeof(DataAccess.Rule))]
-        public IHttpActionResult PostRule(DataAccess.Rule rule)
+        [ResponseType(typeof(Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule))]
+        public IHttpActionResult PostRule(Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule rule)
         {
             if (!ModelState.IsValid)
             {
@@ -86,10 +86,10 @@ namespace TextToolPoc.Controllers
         }
 
         // DELETE: api/Rules/5
-        [ResponseType(typeof(DataAccess.Rule))]
+        [ResponseType(typeof(Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule))]
         public IHttpActionResult DeleteRule(int id)
         {
-            DataAccess.Rule rule = db.Rules.Find(id);
+            Com.Service.PerkinElmer.Gaea.Web.DataAccess.Rule rule = db.Rules.Find(id);
             if (rule == null)
             {
                 return NotFound();

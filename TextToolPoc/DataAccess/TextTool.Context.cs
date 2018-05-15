@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TextToolPoc.DataAccess
+namespace Com.Service.PerkinElmer.Gaea.Web.DataAccess
 {
     using System;
     using System.Data.Entity;
