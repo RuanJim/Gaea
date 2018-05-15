@@ -286,32 +286,6 @@ Ext.application({
                                 }
                             }
                         }
-                        //{
-                        //    text: '删除',
-                        //    align: 'center',
-                        //    cell: {
-                        //        xtype: 'widgetcell',
-                        //        widget: {
-                        //            xtype: 'button',
-                        //            ui: 'action',
-                        //            text: '删除',
-                        //            handler: function () {
-                        //                var field = this.up().up().getRecord().getData();
-
-                        //                Ext.getCmp('templateDialog').setMasked({ xtype: 'loadmask', message: 'loading...' });
-
-                        //                Ext.Ajax.request({
-                        //                    url: '/api/TemplateFields/' + field.Id,
-                        //                    method: 'DELETE',
-                        //                    success: function () {
-                        //                        Ext.getCmp('templateGrid').getStore().reload();
-                        //                        Ext.getCmp('templateDialog').setMasked(null);
-                        //                    }
-                        //                });
-                        //            }
-                        //        }
-                        //    }
-                        //}
                     ],
                     height: '100%',
                     layout: 'fit'
@@ -368,99 +342,6 @@ Ext.application({
                 }]
             }]
         };
-
-
-        var pretreatmentSettings = {
-            layout: {
-                type: 'vbox',
-                align: 'stretch'
-            },
-
-            defaultType: 'panel',
-
-            items: [{
-                docked: 'left',
-                width: 600,
-                height: '100%',
-                resizable: {
-                    split: true,
-                    edges: 'east'
-                },
-                items: [{
-                    xtype: 'grid',
-                    title: '规则列表',
-
-                    store: store,
-
-                    columns: [
-                        { text: '规则名称', editable: true, dataIndex: 'name', width: 200 },
-                        { text: '规则类型', dataIndex: 'phone', width: 100 },
-                        { text: '匹配成功率', dataIndex: 'email', width: 100 }
-                    ],
-                    markDirty: true,
-                    plugins: {
-                        gridcellediting: {
-                            selectOnEdit: true
-                        }
-                    },
-
-                    selectable: {
-                        rows: false,
-                        cells: true
-                    },
-                    height: '100%',
-                    layout: 'fit'
-                }]
-            }, {
-                title: '规则内容',
-                flex: true,
-                items: [{
-                    xtype: 'formpanel',
-                    bodyPadding: 20,
-                    autoSize: true,
-                    items: [{
-                        xtype: 'textfield',
-                        allowBlank: false,
-                        required: true,
-                        label: '规则名称',
-                        name: 'user',
-                        placeholder: '规则名称'
-                    }, {
-                        xtype: 'textfield',
-                        allowBlank: false,
-                        required: true,
-                        label: '规则名称',
-                        name: 'user',
-                        placeholder: '规则名称'
-                    }, {
-                        xtype: 'textfield',
-                        allowBlank: false,
-                        required: true,
-                        label: '匹配次数',
-                        name: 'user',
-                        placeholder: '匹配次数'
-                    }, {
-                        xtype: 'textfield',
-                        allowBlank: false,
-                        required: true,
-                        label: '匹配成功次数',
-                        name: 'user',
-                        placeholder: '匹配成功次数'
-                    }, {
-                        xtype: 'textfield',
-                        allowBlank: false,
-                        required: true,
-                        label: '成功率',
-                        name: 'pass',
-                        placeholder: '成功率'
-                    }],
-                    buttons: [{
-                        text: '保存规则'
-                    }]
-                }]
-            }]
-        };
-
 
         var toolbar = {
             xtype: 'toolbar',
@@ -540,25 +421,6 @@ Ext.application({
                     });
 
                 }
-                //}, {
-                //    xtype: 'button',
-                //    text: '预处理规则设置',
-                //    iconCls: 'pretreatmentSettings',
-                //    handler: function () {
-                //        var dialog = Ext.create({
-                //            xtype: 'dialog',
-                //            title: '规则设置',
-
-                //            maximizable: true,
-                //            closable: true,
-                //            width: 1100,
-                //            height: 800,
-                //            layout: "fit",
-                //            items: [pretreatmentSettings]
-                //        });
-
-                //        dialog.show();
-                //    }
             }, {
                 xtype: 'button',
                 text: '规则设置',
@@ -599,22 +461,6 @@ Ext.application({
 
                     dialog.show();
                 }
-                //}, {
-                //    xtype: 'button',
-                //    text: '预处理',
-                //    iconCls: 'pretreatment',
-                //    handler: function () {
-                //        Ext.Ajax.request({
-                //            url: '/api/pt',
-                //            method: 'POST',
-                //            jsonData: {
-                //                caseText: Ext.getCmp("caseText").getValue()
-                //            },
-                //            success: function (response) {
-                //                Ext.getCmp("caseText").setValue(Ext.decode(response.responseText).resultText);
-                //            }
-                //        });
-                //    }
             }, {
                 xtype: 'button',
                 text: '查看结果',
@@ -668,33 +514,7 @@ Ext.application({
                             ArticleId: selectedArticle.Id
                         },
                         success: function (response) {
-
                             Ext.getCmp('mainPanel').setMasked(null);
-
-                            //var resultStore = Ext.create('Ext.data.Store', {
-                            //    fields: ['Id', 'Name', {
-                            //        name: 'MatchSummary',
-                            //        type: 'string',
-                            //        mapping: function (data) {
-                            //            if (data.FieldMatches.length > 0) {
-                            //                var rules = data.FieldMatches[0].Rules;
-
-                            //                var result = [];
-
-                            //                for (var i = 0; i < rules.length; i++) {
-                            //                    result[i] = rules[i].RuleName + ": " + Ext.util.Format.number(rules[i].MatchTimes / rules[i].Runs, '00.00%');
-                            //                }
-
-                            //                return result.join(", ");
-                            //            } else {
-                            //                return "";
-                            //            }
-                            //        }
-                            //    }],
-                            //    data: result.form.Fields
-                            //});
-
-                            //Ext.getCmp("resultGrid").setStore(resultStore);
                         }
                     });
                 }
@@ -782,9 +602,6 @@ Ext.application({
 
             plugins: {
                 cellediting: true
-                //gridcellediting: {
-                //    selectOnEdit: true
-                //}
             },
 
             selectable: {
