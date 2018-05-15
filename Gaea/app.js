@@ -9,7 +9,8 @@ Ext.application({
         'Ext.Toolbar',
         'Ext.grid.plugin.CellEditing',
         'Ext.layout.HBox',
-        'Com.PerkinElmer.Service.Gaea.Stores.RuleStore'
+        'Com.PerkinElmer.Service.Gaea.Stores.RuleStore',
+        'Com.PerkinElmer.Service.Gaea.Stores.TemplateStore',
     ],
 
     launch: function () {
@@ -17,8 +18,6 @@ Ext.application({
         Ext.ns('Com.PerkinElmer.Service.Gaea.Globals');
 
         Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle = { Id: 0 };
-
-        let selectedArticle = Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle;
 
         var ruleSettings = {
             id: 'ruleDialog',
@@ -42,7 +41,9 @@ Ext.application({
                     xtype: 'grid',
                     title: '规则列表',
 
-                    store: Ext.create("Com.PerkinElmer.Service.Gaea.Stores.RuleStore"),
+                    store: Ext.create({
+                        xtype: 'rule-store'
+                    }),
 
                     columns: [
                         { text: '编号', dataIndex: 'Id', width: 30 },
@@ -137,34 +138,6 @@ Ext.application({
             }]
         };
 
-        var templateStore = Ext.create('Ext.data.Store', {
-            id: "templateStore",
-            proxy: {
-                type: 'ajax',
-                url: '/api/TemplateFields',
-                reader: {
-                    type: 'json'
-                }
-            },
-            fields: [
-                'Id', 'Name', {
-                    name: 'ExpectedValue',
-                    type: 'string',
-                    mapping: function (data) {
-                        var exp = "";
-
-                        Ext.Array.each(data.FieldExpecteds, function (fieldExpected) {
-                            if (fieldExpected.Article.Id === selectedArticle.Id) {
-                                exp = fieldExpected.Value;
-                            }
-                        });
-
-                        return exp;
-                    }
-                }
-            ]
-        });
-
         var templateSettings = {
             id: 'templateDialog',
             layout: {
@@ -187,7 +160,10 @@ Ext.application({
                     xtype: 'grid',
                     title: '模板项目列表',
 
-                    store: templateStore,
+                    store: Ext.create({
+                        id: "templateStore",
+                        xtype: 'template-store'
+                    }),
 
                     columns: [
                         { text: '编号', dataIndex: 'Id', width: 30 },
@@ -212,7 +188,7 @@ Ext.application({
                                                 method: 'POST',
                                                 jsonData: {
                                                     FieldId: field.Id,
-                                                    ArticleId: selectedArticle.Id,
+                                                    ArticleId: Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id,
                                                     ExpectedValue: value
                                                 },
                                                 success: function () {
@@ -263,7 +239,7 @@ Ext.application({
                             handler: function () {
                                 var rForm = Ext.getCmp("templateForm");
 
-                                rForm.setValues({ ArticleId: selectedArticle.Id });
+                                rForm.setValues({ ArticleId: Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id });
 
                                 if (rForm.isValid()) {
                                     Ext.Ajax.request({
@@ -346,7 +322,7 @@ Ext.application({
                                     handler: function () {
                                         var article = Ext.getCmp("caseList").getSelection().getData();
 
-                                        selectedArticle = article;
+                                        Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle = article;
 
                                         Ext.getCmp("filename").setValue(article.FileName);
                                         Ext.getCmp("caseText").setValue(article.OriginalContent);
@@ -411,7 +387,7 @@ Ext.application({
                         method: 'POST',
                         jsonData: {
                             TemplateId: 1,
-                            ArticleId: selectedArticle.Id
+                            ArticleId: Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id
                         },
                         success: function (response) {
                             Ext.getCmp("resultGrid").setStore(Ext.create('Ext.data.Store', {
@@ -425,7 +401,7 @@ Ext.application({
                                             var exp = "";
 
                                             Ext.Array.each(data.FieldExpecteds, function (fieldExpected) {
-                                                if (fieldExpected.Article.Id === selectedArticle.Id) {
+                                                if (fieldExpected.Article.Id === Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id) {
                                                     exp = fieldExpected.Value;
                                                 }
                                             });
@@ -451,7 +427,7 @@ Ext.application({
                         method: 'POST',
                         jsonData: {
                             TemplateId: 1,
-                            ArticleId: selectedArticle.Id
+                            ArticleId: Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id
                         },
                         success: function (response) {
                             Ext.getCmp('mainPanel').setMasked(null);
@@ -502,7 +478,7 @@ Ext.application({
                     var filteredData = [];
 
                     Ext.each(field.FieldMatches, function (fieldMatch) {
-                        if (fieldMatch.Article.Id === selectedArticle.Id) {
+                        if (fieldMatch.Article.Id === Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id) {
                             filteredData.push(fieldMatch);
                         }
                     });

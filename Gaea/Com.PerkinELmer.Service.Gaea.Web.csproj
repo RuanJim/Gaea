@@ -516,6 +516,7 @@
     <Content Include="build\temp\development\TextTool\sencha-compiler\app\full-page-master-bundle.js" />
     <Content Include="build\temp\development\TextTool\slicer-temp\bootstrap.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\RuleStore.js" />
+    <Content Include="Com\PerkinElmer\Service\Gaea\Stores\TemplateStore.js" />
     <Content Include="DataAccess\TextTool.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TextTool.Context.cs</LastGenOutput>
