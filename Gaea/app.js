@@ -16,18 +16,6 @@ Ext.application({
     ],
 
     launch: function () {
-
-        var store = Ext.create('Ext.data.Store', {
-            fields: ['name', 'email', 'phone'],
-            data: [
-                { 'name': '表单项目', "email": "55%", "phone": "RegExp" },
-                { 'name': '日期项目', "email": "42%", "phone": "SubString" },
-                { 'name': '布尔项目', "email": "25%", "phone": "Tail" },
-                { 'name': '整数项目', "email": "14%", "phone": "StartWith" },
-                { 'name': '科学计数法', "email": "14%", "phone": "StartWith" }
-            ]
-        });
-
         var ruleStore = Ext.create('Ext.data.Store', {
             fields: ['name', 'email', 'phone', 'percent'],
             data: [
