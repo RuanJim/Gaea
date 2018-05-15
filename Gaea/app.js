@@ -1,8 +1,4 @@
-﻿var selectedArticle = {
-    Id: 0
-};
-
-/*
+﻿/*
  * This call registers your application to be launched when the browser is ready.
  */
 Ext.application({
@@ -17,6 +13,13 @@ Ext.application({
     ],
 
     launch: function () {
+
+        Ext.ns('Com.PerkinElmer.Service.Gaea.Globals');
+
+        Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle = { Id: 0 };
+
+        let selectedArticle = Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle;
+
         var ruleSettings = {
             id: 'ruleDialog',
             layout: {
