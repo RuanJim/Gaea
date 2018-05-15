@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Com.Service.PerkinElmer.Gaea.Web.DataAccess
+namespace Com.PerkinElmer.Service.Gaea.Web.DataAccess
 {
     using System;
     using System.Data.Entity;

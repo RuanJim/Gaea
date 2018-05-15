@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Com.Service.PerkinElmer.Gaea.Web.DataAccess;
+using Com.PerkinElmer.Service.Gaea.Web.DataAccess;
 
 namespace TextToolPoc.Controllers
 {

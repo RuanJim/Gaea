@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Web.Http;
-using Com.Service.PerkinElmer.Gaea.Web.DataAccess;
+using Com.PerkinElmer.Service.Gaea.Web.DataAccess;
 
 namespace TextToolPoc.Controllers
 {
