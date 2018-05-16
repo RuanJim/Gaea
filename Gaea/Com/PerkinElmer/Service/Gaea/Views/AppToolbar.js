@@ -2,6 +2,10 @@
     extend: 'Ext.Toolbar',
     xtype: 'app-toolbar',
 
+    requires: [
+        'Com.PerkinElmer.Service.Gaea.Views.RuleForm'
+    ],
+
     docked: 'top',
     items: [{
         xtype: 'button',
@@ -12,7 +16,6 @@
                 Ext.Msg.alert("文件名不能为空。");
                 return;
             };
-
 
             Ext.Ajax.request({
                 url: "/api/Articles",
@@ -100,58 +103,7 @@
                     }, {
                         title: '规则内容',
                         flex: true,
-                        items: [{
-                            id: 'ruleForm',
-                            xtype: 'formpanel',
-                            bodyPadding: 20,
-                            autoSize: true,
-                            waitMsg: 'loading...',
-                            items: [{
-                                xtype: 'textfield',
-                                allowBlank: false,
-                                required: true,
-                                label: '规则名称',
-                                name: 'RuleName',
-                                placeholder: '规则名称'
-                            }, {
-                                xtype: 'selectfield',
-                                allowBlank: false,
-                                required: true,
-                                label: '规则类型',
-                                name: 'RuleType',
-                                placeholder: '规则类型',
-                                options: [{
-                                    text: "正则表达式",
-                                    value: "RegExp"
-                                }]
-                            }, {
-                                xtype: 'textareafield',
-                                allowBlank: false,
-                                required: true,
-                                label: '规则',
-                                name: 'Content',
-                                placeholder: '规则'
-                            }],
-                            buttons: {
-                                submit: {
-                                    text: "保存",
-                                    handler: function () {
-                                        var rForm = Ext.getCmp("ruleForm");
-
-                                        if (rForm.isValid()) {
-                                            rForm.submit({
-                                                url: '/api/Rules',
-                                                method: 'POST',
-                                                success: function (form, action) {
-                                                    Ext.getCmp('ruleGrid').getStore().reload();
-                                                    Ext.getCmp("ruleForm").reset();
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            }
-                        }]
+                        items: [{ id: 'ruleForm', xtype: 'rule-form' }]
                     }]
                 }]
             });
