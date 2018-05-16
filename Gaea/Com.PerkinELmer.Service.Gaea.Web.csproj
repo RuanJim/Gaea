@@ -518,6 +518,7 @@
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\CaseStore.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\RuleStore.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\TemplateStore.js" />
+    <Content Include="Com\PerkinElmer\Service\Gaea\Views\DetailsGrid.js" />
     <Content Include="DataAccess\TextTool.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TextTool.Context.cs</LastGenOutput>
@@ -7540,7 +7541,6 @@
     <Folder Include="app\" />
     <Folder Include="App_Data\" />
     <Folder Include="Com\PerkinElmer\Service\Gaea\Controllers\" />
-    <Folder Include="Com\PerkinElmer\Service\Gaea\Views\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

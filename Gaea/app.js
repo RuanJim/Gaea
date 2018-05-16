@@ -11,7 +11,9 @@ Ext.application({
         'Ext.layout.HBox',
         'Com.PerkinElmer.Service.Gaea.Stores.RuleStore',
         'Com.PerkinElmer.Service.Gaea.Stores.TemplateStore',
-        'Com.PerkinElmer.Service.Gaea.Stores.CaseStore'
+        'Com.PerkinElmer.Service.Gaea.Stores.CaseStore',
+
+        'Com.PerkinElmer.Service.Gaea.Views.DetailsGrid'
     ],
 
     launch: function () {
@@ -497,37 +499,6 @@ Ext.application({
             }
         };
 
-        var detailGrid = Ext.create("Ext.grid.Grid", {
-            id: 'detailGrid',
-            xtype: 'grid',
-            title: '规则评分',
-            docked: 'top',
-            height: 400,
-
-            plugins: {
-                cellediting: true
-            },
-
-            selectable: {
-                rows: false,
-                cells: true
-            },
-
-            listeners: {
-                edit: function () {
-                    debugger;
-                }
-            },
-
-            columns: [
-                { text: '编号', dataIndex: 'Id', width: 40 },
-                { text: '规则', dataIndex: 'RuleName', width: 80 },
-                { text: '规则', dataIndex: 'RuleContent', width: 200 },
-                { text: '匹配文本', dataIndex: 'MatchText', width: 100 },
-                { text: '匹配得分', editable: true, dataIndex: 'MatchScore', width: 100 }
-            ]
-        });
-
         var panel = {
             xtype: 'panel',
             layout: 'vbox',
@@ -538,7 +509,10 @@ Ext.application({
                     docked: 'right',
                     layout: 'hbox',
                     width: '50%',
-                    items: [resultGrid, detailGrid]
+                    items: [resultGrid, {
+                        id: 'detailGrid',
+                        xtype: 'details-grid'
+                    }]
                 }
             ]
         };
