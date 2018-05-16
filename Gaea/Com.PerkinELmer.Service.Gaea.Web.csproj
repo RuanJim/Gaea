@@ -515,6 +515,7 @@
     <Content Include="build\development\TextTool\resources\TextTool-all_2.css" />
     <Content Include="build\temp\development\TextTool\sencha-compiler\app\full-page-master-bundle.js" />
     <Content Include="build\temp\development\TextTool\slicer-temp\bootstrap.js" />
+    <Content Include="Com\PerkinElmer\Service\Gaea\Stores\CaseStore.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\RuleStore.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\TemplateStore.js" />
     <Content Include="DataAccess\TextTool.Context.tt">

@@ -11,6 +11,7 @@ Ext.application({
         'Ext.layout.HBox',
         'Com.PerkinElmer.Service.Gaea.Stores.RuleStore',
         'Com.PerkinElmer.Service.Gaea.Stores.TemplateStore',
+        'Com.PerkinElmer.Service.Gaea.Stores.CaseStore'
     ],
 
     launch: function () {
@@ -269,9 +270,9 @@ Ext.application({
                 handler: function () {
                     if (!Ext.getCmp('filename').getValue()) {
                         Ext.Msg.alert("文件名不能为空。");
-                        return ;
+                        return;
                     };
-                    
+
 
                     Ext.Ajax.request({
                         url: "/api/Articles",
@@ -290,52 +291,39 @@ Ext.application({
                 text: '选择病历',
                 iconCls: 'chooseFile',
                 handler: function () {
+                    var dialog = Ext.create({
+                        xtype: 'dialog',
+                        title: '选择病历',
 
-                    Ext.Ajax.request({
-                        url: '/api/Articles',
-                        success: function (response) {
-                            var articles = Ext.decode(response.responseText);
+                        closable: true,
+                        width: 600,
+                        height: 400,
 
-                            var dialog = Ext.create({
-                                xtype: 'dialog',
-                                title: '选择病历',
+                        items: [{
+                            id: 'caseList',
+                            xtype: 'list',
+                            fullscreen: true,
+                            itemTpl: "{FileName}",
+                            padding: 5,
+                            store: Ext.create({ xtype: 'case-store' })
+                        }],
+                        buttons: [{
+                            xtype: 'button',
+                            text: '选择',
+                            handler: function () {
+                                var article = Ext.getCmp("caseList").getSelection().getData();
 
-                                closable: true,
-                                width: 600,
-                                height: 400,
+                                Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle = article;
 
-                                items: [{
-                                    id: 'caseList',
-                                    xtype: 'list',
-                                    fullscreen: true,
-                                    itemTpl: "{FileName}",
-                                    padding: 5,
-                                    store: {
-                                        xtype: "store",
-                                        columns: ['FileName', 'OriginalContent'],
-                                        data: articles
-                                    }
-                                }],
-                                buttons: [{
-                                    xtype: 'button',
-                                    text: '选择',
-                                    handler: function () {
-                                        var article = Ext.getCmp("caseList").getSelection().getData();
+                                Ext.getCmp("filename").setValue(article.FileName);
+                                Ext.getCmp("caseText").setValue(article.OriginalContent);
 
-                                        Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle = article;
-
-                                        Ext.getCmp("filename").setValue(article.FileName);
-                                        Ext.getCmp("caseText").setValue(article.OriginalContent);
-
-                                        dialog.destroy();
-                                    }
-                                }]
-                            });
-
-                            dialog.show();
-                        }
+                                dialog.destroy();
+                            }
+                        }]
                     });
 
+                    dialog.show();
                 }
             }, {
                 xtype: 'button',
@@ -564,8 +552,4 @@ Ext.application({
             ]
         });
     }
-
-
 });
-
-
