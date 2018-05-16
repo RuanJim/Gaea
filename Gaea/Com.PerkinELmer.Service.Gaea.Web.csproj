@@ -519,6 +519,7 @@
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\RuleStore.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Stores\TemplateStore.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\AppPanel.js" />
+    <Content Include="Com\PerkinElmer\Service\Gaea\Views\AppToolbar.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\CaseForm.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\DetailsGrid.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\ResultGrid.js" />
