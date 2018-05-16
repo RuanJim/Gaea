@@ -4,6 +4,8 @@
 
     requires: [
         'Com.PerkinElmer.Service.Gaea.Views.RuleForm',
+        'Com.PerkinElmer.Service.Gaea.Views.RuleGrid',
+        'Com.PerkinElmer.Service.Gaea.Views.TemplateForm',
         'Com.PerkinElmer.Service.Gaea.Views.TemplateGrid'
     ],
 
@@ -146,53 +148,7 @@
                     }, {
                         title: '模板项目',
                         flex: true,
-                        items: [{
-                            id: 'templateForm',
-                            xtype: 'formpanel',
-                            bodyPadding: 20,
-                            autoSize: true,
-                            waitMsg: 'loading...',
-                            items: [{
-                                xtype: 'textfield',
-                                allowBlank: false,
-                                required: true,
-                                label: '项目名称',
-                                name: 'Name',
-                                placeholder: '项目名称'
-                            }, {
-                                xtype: 'hiddenfield',
-                                name: 'ArticleId'
-                            }, {
-                                xtype: 'textfield',
-                                allowBlank: false,
-                                required: true,
-                                label: '期望值',
-                                name: 'ExpectedValue',
-                                placeholder: '期望值'
-                            }],
-                            buttons: {
-                                submit: {
-                                    text: "保存",
-                                    handler: function () {
-                                        var rForm = Ext.getCmp("templateForm");
-
-                                        rForm.setValues({ ArticleId: Com.PerkinElmer.Service.Gaea.Globals.SelectedArticle.Id });
-
-                                        if (rForm.isValid()) {
-                                            Ext.Ajax.request({
-                                                url: "/api/SaveTemplateField",
-                                                method: "POST",
-                                                jsonData: rForm.getValues(),
-                                                success: function () {
-                                                    Ext.getCmp('templateGrid').getStore().reload();
-                                                    Ext.getCmp("templateForm").reset();
-                                                }
-                                            });
-                                        }
-                                    }
-                                }
-                            }
-                        }]
+                        items: [{ id: 'templateForm', xtype: 'template-form' }]
                     }]
                 }]
             });
