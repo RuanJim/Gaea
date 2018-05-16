@@ -9,12 +9,15 @@ Ext.application({
         'Ext.Toolbar',
         'Ext.grid.plugin.CellEditing',
         'Ext.layout.HBox',
+        // Stores
         'Com.PerkinElmer.Service.Gaea.Stores.RuleStore',
         'Com.PerkinElmer.Service.Gaea.Stores.TemplateStore',
         'Com.PerkinElmer.Service.Gaea.Stores.CaseStore',
-
+        // Views
         'Com.PerkinElmer.Service.Gaea.Views.DetailsGrid',
-        'Com.PerkinElmer.Service.Gaea.Views.ResultGrid'
+        'Com.PerkinElmer.Service.Gaea.Views.ResultGrid',
+
+        'Com.PerkinElmer.Service.Gaea.Views.CaseForm'
     ],
 
     launch: function () {
@@ -428,33 +431,13 @@ Ext.application({
             }]
         };
 
-        var formPanel = {
-            xtype: 'formpanel',
-            docked: 'left',
-            width: '50%',
-            title: '病历',
-            padding: 10,
-            items: [{
-                id: 'filename',
-                label: '文件名',
-                required: true,
-                xtype: 'textfield'
-            }, {
-                id: 'caseText',
-                label: '病历',
-                xtype: 'textareafield',
-                height: '700',
-                required: true,
-                value: ''
-            }]
-        };
-
         var panel = {
             xtype: 'panel',
             layout: 'vbox',
             items: [
-                formPanel,
                 {
+                    xtype: 'case-form'
+                }, {
                     xtype: 'panel',
                     docked: 'right',
                     layout: 'hbox',
