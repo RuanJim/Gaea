@@ -17,7 +17,8 @@ Ext.application({
         'Com.PerkinElmer.Service.Gaea.Views.DetailsGrid',
         'Com.PerkinElmer.Service.Gaea.Views.ResultGrid',
 
-        'Com.PerkinElmer.Service.Gaea.Views.CaseForm'
+        'Com.PerkinElmer.Service.Gaea.Views.CaseForm',
+        'Com.PerkinElmer.Service.Gaea.Views.AppPanel'
     ],
 
     launch: function () {
@@ -431,34 +432,12 @@ Ext.application({
             }]
         };
 
-        var panel = {
-            xtype: 'panel',
-            layout: 'vbox',
-            items: [
-                {
-                    xtype: 'case-form'
-                }, {
-                    xtype: 'panel',
-                    docked: 'right',
-                    layout: 'hbox',
-                    width: '50%',
-                    items: [{
-                        id: 'resultGrid',
-                        xtype: 'result-grid'
-                    }, {
-                        id: 'detailGrid',
-                        xtype: 'details-grid'
-                    }]
-                }
-            ]
-        };
-
         Ext.Viewport.add({
             id: 'mainPanel',
             xtype: 'panel',
             items: [
                 toolbar,
-                panel
+                { xtype: 'app-panel' }
             ]
         });
     }
