@@ -525,6 +525,7 @@
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\ResultGrid.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\RuleForm.js" />
     <Content Include="Com\PerkinElmer\Service\Gaea\Views\RuleGrid.js" />
+    <Content Include="Com\PerkinElmer\Service\Gaea\Views\TemplateGrid.js" />
     <Content Include="DataAccess\TextTool.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TextTool.Context.cs</LastGenOutput>
