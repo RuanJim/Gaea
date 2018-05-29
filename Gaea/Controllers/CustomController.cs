@@ -128,7 +128,15 @@ namespace TextToolPoc.Controllers
 
                         try
                         {
-                            fm.MatchText = match.Groups[1].Captures[0].Value;
+                            List<string> matchTextList = new List<string>();
+
+                            for (int i = 1; i <= match.Groups.Count; i++)
+                            {
+                                matchTextList.Add(match.Groups[1].Captures[0].Value);
+                            }
+
+                            fm.MatchText = String.Join("|", matchTextList.ToString());
+
                             fm.MatchScore = Convert.ToInt32(utils.LevenshteinDistance.Instance.LevenshteinDistancePercent(expectedValue, fm.MatchText) * 100);
 
                             field.FieldMatches.Add(fm);
