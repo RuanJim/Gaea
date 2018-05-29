@@ -111,9 +111,7 @@ namespace TextToolPoc.Controllers
 
                 foreach (Rule rule in rules)
                 {
-                    Regex re = new Regex("^#(.*?)#", RegexOptions.IgnoreCase);
-
-                    string expression = re.Replace(field.FieldName, "$1");
+                    string expression = rule.Content.Replace("[TAG]", field.FieldName);
 
                     Regex regex = new Regex(expression);
 
