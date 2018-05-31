@@ -7536,6 +7536,7 @@
     <Content Include="build\temp\development\TextTool\sass\TextTool-all.scss.tmp" />
     <Content Include="build\temp\development\TextTool\slicer-temp\bootstrap.json" />
     <Content Include="build\temp\development\TextTool\slicer-temp\bootstrap.jsonp" />
+    <Content Include="Com.PerkinELmer.Service.Gaea.Web.csproj.wpp.targets" />
     <None Include="Properties\PublishProfiles\120.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -133,7 +133,7 @@ namespace TextToolPoc.Controllers
                                 matchTextList.Add(match.Groups[1].Captures[0].Value);
                             }
 
-                            fm.MatchText = String.Join("|", matchTextList.ToString());
+                            fm.MatchText = String.Join("|", matchTextList.ToArray());
 
                             fm.MatchScore = Convert.ToInt32(utils.LevenshteinDistance.Instance.LevenshteinDistancePercent(expectedValue, fm.MatchText) * 100);
 
