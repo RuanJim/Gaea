@@ -122,15 +122,21 @@ namespace TextToolPoc.Controllers
                         fm.Article = article;
                         fm.Rule = rule;
 
-                        Match match = regex.Match(article.OriginalContent);
+                        MatchCollection regMatches = regex.Matches(article.OriginalContent);
 
                         try
                         {
                             List<string> matchTextList = new List<string>();
 
-                            for (int i = 1; i <= match.Groups.Count; i++)
+                            foreach (Match match in regMatches)
                             {
-                                matchTextList.Add(match.Groups[1].Captures[0].Value);
+                                for (int i = 1; i <= match.Groups.Count; i++)
+                                {
+                                    foreach (Capture capture in match.Groups[i].Captures)
+                                    {
+                                        matchTextList.Add(capture.Value);
+                                    }
+                                }
                             }
 
                             fm.MatchText = String.Join("|", matchTextList.ToArray());
@@ -180,7 +186,8 @@ namespace TextToolPoc.Controllers
                 db.Templates.First().TemplateFields.Add(field);
             }
 
-            field.FieldExpecteds.Add(new FieldExpected {
+            field.FieldExpecteds.Add(new FieldExpected
+            {
                 Article = db.Articles.First(a => a.Id == articleId),
                 Value = args.ExpectedValue
             });
